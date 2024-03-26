@@ -32,7 +32,8 @@ class ArraysTests {
 	void bubbleSortTest() {
 		Integer [] expected = {4, 8, 56, 100, 41, 23, -3, -7};
 		Integer [] numbersCopy = java.util.Arrays.copyOf(numbers, numbers.length);
-		Arrays.bubbleSort(numbersCopy, new EvenOddComparator());
+		Arrays.bubbleSort(numbersCopy, new EvenOddComparator());	
+		
 		assertArrayEquals (expected, numbersCopy);
 	}
 }

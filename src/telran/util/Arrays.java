@@ -32,6 +32,19 @@ public class Arrays {
 		
 	}
 	public static <T> void bubbleSort(T[] array, Comparator <T> comp ) {
-		//TODO
+		 boolean flag = true;
+	        while (flag) {
+	            flag = false;
+	            for (int j = 0; j < array.length - 1; j++) {
+	                if (comp.compare(array[j], array[j + 1]) > 0) {
+	                    T depo = array[j];
+	                    array[j] = array[j + 1];
+	                    array[j + 1] = depo;
+	                    flag = true;
+	                }
+	            }
+	        }
+	    }
 	}
-} 
+
+
