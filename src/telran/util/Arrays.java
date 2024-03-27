@@ -42,6 +42,7 @@ public class Arrays {
 	                    array[j] = array[j + 1];
 	                    array[j + 1] = depo;
 	                    flag = true;
+	                    len=len-1;
 	                }
 	            }
 	        }
