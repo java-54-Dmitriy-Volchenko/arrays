@@ -34,8 +34,9 @@ public class Arrays {
 	public static <T> void bubbleSort(T[] array, Comparator <T> comp ) {
 		 boolean flag = true;
 	        while (flag) {
+	        	int len = array.length;
 	            flag = false;
-	            for (int j = 0; j < array.length - 1; j++) {
+	            for (int j = 0; j < len - 1; j++) {
 	                if (comp.compare(array[j], array[j + 1]) > 0) {
 	                    T depo = array[j];
 	                    array[j] = array[j + 1];
