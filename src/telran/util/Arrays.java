@@ -35,14 +35,12 @@ public class Arrays {
 	
 	public static <T> void bubbleSort(T[] array, Comparator <T> comp ) {
 		 boolean flag = true;
-		 int len = array.length;
+		 int len = array.length-1;
 	        while (flag) {	        	
 	            flag = false;
-	            for (int j = 0; j < len - 1; j++) {
+	            for (int j = 0; j < len; j++) {
 	                if (comp.compare(array[j], array[j + 1]) > 0) {
-	                    T depo = array[j];
-	                    array[j] = array[j + 1];
-	                    array[j + 1] = depo;
+	                    swap (array, j, j+1);
 	                    flag = true;
 	                   
 	                }         
@@ -50,6 +48,18 @@ public class Arrays {
 	            len--;
 	        }
 	    }
+	private static <T> void swap (T[] array, int i, int j ) {
+		T depo = array[i];
+        array[i] = array[j];
+        array[j] = depo;
+	}
+	
+	
+	public static <T> int binarySearch(T[] array,T key,  Comparator <T> comp ) {
+		
+		return -1;
+	}
+	
 	}
 
 
