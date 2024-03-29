@@ -83,7 +83,7 @@ public class Arrays {
 		return java.util.Arrays.copyOf(arResult,index);
 	}
 	
-		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) {//tests of two methods are equal. I decided to call first method from second
+		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) {//texts of two methods are equal. I decided to call first method from second
 			     
 		 return search(array, predicate);
 		 
