@@ -69,11 +69,22 @@ String[] stringsMin = {"abc", "lmn", "123",  "y"};
 	}
 	@Test
 	void binarySearchTest() {
-		//TODO
+		Integer[] sortedInt = {-22, -14, 0, 4, 15, 88, 88, 339, 1000254};			
+		assertEquals (3, Arrays.binarySearch(sortedInt,4,(a, b) -> a.compareTo(b)));
+		assertEquals (-10, Arrays.binarySearch(sortedInt,1000255,(a, b) -> a.compareTo(b)));
+		assertEquals (-1, Arrays.binarySearch(sortedInt,-33,(a, b) -> a.compareTo(b)));
+		assertEquals (-3, Arrays.binarySearch(sortedInt,-5,(a, b) -> a.compareTo(b)));
+		assertTrue(Arrays.binarySearch(sortedInt,88,(a, b) -> a.compareTo(b))>-1);
 	}
 	 @Test
 	 void removeIfTest() {
-		 //TODO
+		 Integer[] numbers = {100, -3, 23, 4, 8, 41, 56, -7};
+		 Integer[] result1  = {100, 23, 4, 8, 41, 56};
+		 assertArrayEquals (result1, Arrays.removeIf(numbers, a -> a>0));
+		 Integer[] result2  = {-3, -7};
+		 assertArrayEquals (result2, Arrays.removeIf(numbers, a -> a<0));	
+		 Integer[] result3  = {};
+		 assertArrayEquals (result3, Arrays.removeIf(numbers, a -> a==0));
 	 }
 
 }

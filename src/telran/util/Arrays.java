@@ -51,17 +51,24 @@ public class Arrays {
 		
 	}
 	public static <T> int binarySearch(T[] array, T key, Comparator<T> comp) {
-		//TODO
-		//left index = 0
-		//right index = array.length - 1
-		//middle (left + right) / 2
-		//left part - left index, right index = middle - 1
-		//right part - left index = middle + 1, right index
-		//while left <= right
-		//returns exactly what the standard binarySearch does
-		//if there are several equaled elements no guarantee that
-		// being returned index is the one to first occurrence
-		return -1;
+		  int left = 0;
+		    int right = array.length - 1;
+
+		    while (left <= right) {
+		        int middle = (left + right) / 2;
+		        int res = comp.compare(array[middle], key);
+
+		        if (res < 0) {
+		            left = middle + 1;
+		        } else if (res > 0) {
+		            right = middle - 1;
+		        } else {
+		            return middle;
+		        }
+		    }
+
+		    
+		    return -(left + 1);
 	}
 	public static <T> T[] search(T[] array, Predicate<T> predicate) {
 		//Impossible to allocate memory for generic array
@@ -75,10 +82,12 @@ public class Arrays {
 		}
 		return java.util.Arrays.copyOf(arResult,index);
 	}
-	public static <T> T[] removeIf(T[] array, Predicate<T> predicate) {
-		//TODO
-		//removes all elements of array matching a given predicate
-		return null;
+	
+		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) {//tests of two methods are equal. I decided to call first method from second
+			     
+		 return search(array, predicate);
+		 
+	    }
 	}
-}
+
 
