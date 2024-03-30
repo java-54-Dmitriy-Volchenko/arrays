@@ -53,9 +53,9 @@ public class Arrays {
 	public static <T> int binarySearch(T[] array, T key, Comparator<T> comp) {
 	    int left = 0;
 	    int right = array.length - 1;
-
+	    int middle = left + (right - left) / 2;
 	    while (left <= right && !key.equals(array[left + (right - left) / 2])) {
-	        int middle = left + (right - left) / 2;
+	        middle = left + (right - left) / 2;
 	        int res = comp.compare(array[middle], key);
 
 	        if (res < 0) {
@@ -82,7 +82,7 @@ public class Arrays {
 	}
 	
 		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) { 
-			  T[] result = search(array, predicate.negate());//changed after Yuri's comments
+			 T[] result = search(array, a -> !predicate.test(a));
 			    return result;
 		 
 	    }
