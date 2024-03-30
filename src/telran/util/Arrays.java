@@ -51,25 +51,23 @@ public class Arrays {
 		
 	}
 	public static <T> int binarySearch(T[] array, T key, Comparator<T> comp) {
-		  int left = 0;
-		    int right = array.length - 1;
+	    int left = 0;
+	    int right = array.length - 1;
 
-		    while (left <= right) {
-		        int middle = left + (right - left) / 2;//changed after Vladimir's comment about overflow
-		        int res = comp.compare(array[middle], key);
+	    while (left <= right && !key.equals(array[left + (right - left) / 2])) {
+	        int middle = left + (right - left) / 2;
+	        int res = comp.compare(array[middle], key);
 
-		        if (res < 0) {
-		            left = middle + 1;
-		        } else if (res > 0) {
-		            right = middle - 1;
-		        } else {
-		            return middle;
-		        }
-		    }
+	        if (res < 0) {
+	            left = middle + 1;
+	        } else {
+	            right = middle - 1;
+	        }
+	    }
 
-		    
-		    return -(left + 1);
+	    return left <= right ? left + (right - left) / 2 : -(left + 1);
 	}
+
 	public static <T> T[] search(T[] array, Predicate<T> predicate) {
 		//Impossible to allocate memory for generic array
 		//Only Arrays.copyOf may be used
@@ -84,23 +82,8 @@ public class Arrays {
 	}
 	
 		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) { 
-			   int count = 0;
-		    
-			   for (int i = 0; i < array.length; i++) {
-		            if (!predicate.test(array[i])) {
-		                count++;
-		            }
-		        }
-		       
-		        T[] result = java.util.Arrays.copyOf(array, count);
-		        int index = 0;
-		      
-		        for (int i = 0; i < array.length; i++) {
-		            if (!predicate.test(array[i])) {
-		                result[index++] = array[i];
-		            }
-		        }
-		        return result;
+			  T[] result = search(array, predicate.negate());//changed after Yuri's comments
+			    return result;
 		 
 	    }
 	}
