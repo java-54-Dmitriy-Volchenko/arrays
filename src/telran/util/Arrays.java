@@ -55,7 +55,7 @@ public class Arrays {
 		    int right = array.length - 1;
 
 		    while (left <= right) {
-		        int middle = (left + right) / 2;
+		        int middle = left + (right - left) / 2;//changed after Vladimir's comment about overflow
 		        int res = comp.compare(array[middle], key);
 
 		        if (res < 0) {
@@ -83,9 +83,24 @@ public class Arrays {
 		return java.util.Arrays.copyOf(arResult,index);
 	}
 	
-		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) {//texts of two methods are equal. I decided to call first method from second
-			     
-		 return search(array, predicate);
+		public static <T> T[] removeIf(T[] array, Predicate<T> predicate) { 
+			   int count = 0;
+		    
+			   for (int i = 0; i < array.length; i++) {
+		            if (!predicate.test(array[i])) {
+		                count++;
+		            }
+		        }
+		       
+		        T[] result = java.util.Arrays.copyOf(array, count);
+		        int index = 0;
+		      
+		        for (int i = 0; i < array.length; i++) {
+		            if (!predicate.test(array[i])) {
+		                result[index++] = array[i];
+		            }
+		        }
+		        return result;
 		 
 	    }
 	}

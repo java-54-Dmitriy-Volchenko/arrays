@@ -80,11 +80,11 @@ String[] stringsMin = {"abc", "lmn", "123",  "y"};
 	 void removeIfTest() {
 		 Integer[] numbers = {100, -3, 23, 4, 8, 41, 56, -7};
 		 Integer[] result1  = {100, 23, 4, 8, 41, 56};
-		 assertArrayEquals (result1, Arrays.removeIf(numbers, a -> a>0));
+		 assertArrayEquals (result1, Arrays.removeIf(numbers, a -> a<0));
 		 Integer[] result2  = {-3, -7};
-		 assertArrayEquals (result2, Arrays.removeIf(numbers, a -> a<0));	
-		 Integer[] result3  = {};
-		 assertArrayEquals (result3, Arrays.removeIf(numbers, a -> a==0));
+		 assertArrayEquals (result2, Arrays.removeIf(numbers, a -> a>0));	
+		
+		 assertArrayEquals (numbers, Arrays.removeIf(numbers, a -> a==0));
 	 }
 
 }
